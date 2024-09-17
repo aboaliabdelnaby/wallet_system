@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
     Route::group(['prefix' => 'wallet'], function () {
         Route::get('topup',[WalletController::class, 'topup'])->name('wallet.topup');
-        Route::post('topup/payment',[WalletController::class, 'payment'])->name('wallet.topup.payment');
+        Route::post('topup/payment',[WalletController::class, 'topup_payment'])->name('wallet.topup.payment');
         Route::get('transfer',[WalletController::class, 'transfer'])->name('wallet.transfer');
         Route::post('transfer/payment',[WalletController::class, 'transfer_payment'])->name('wallet.transfer.payment');
         Route::get('transactions/history',[WalletController::class, 'history'])->name('wallet.transactions.history');

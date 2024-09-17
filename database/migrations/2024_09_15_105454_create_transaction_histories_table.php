@@ -17,6 +17,7 @@ return new class extends Migration
             $table->enum('type', [TransactionTypeEnum::SENDING->value, TransactionTypeEnum::RECIEVING->value,TransactionTypeEnum::TOPUP->value]);
             $table->decimal('amount', 15, 2);
             $table->unsignedBigInteger('user_id');
+            $table->decimal('fees_amount', 15, 2)->default(0);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->timestamps();
         });

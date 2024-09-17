@@ -15,6 +15,7 @@ class TransactionHistory extends Model
         'amount',
         'amount',
         'user_id',
+        'fees_amount'
     ];
     protected $casts = [
         'type' => TransactionTypeEnum::class,

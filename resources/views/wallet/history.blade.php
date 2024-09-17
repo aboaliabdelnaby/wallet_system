@@ -15,6 +15,7 @@
                                 <th scope="col">Date</th>
                                 <th scope="col">Transaction Type</th>
                                 <th scope="col">Amount</th>
+                                <th scope="col">Fees</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -23,12 +24,13 @@
                                     <td>{{ $transaction->created_at->format('Y-m-d H:i:s') }}</td>
                                     <td>{{ $transaction->type }}</td>
                                     <td>{{ $transaction->type==\App\Http\Enum\TransactionTypeEnum::SENDING? '- '.$transaction->amount : '+ '. $transaction->amount }}</td>
+                                    <td>{{ $transaction->fees_amount }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-center">
-                            {!! $transactions->links() !!}
+                            {!! $transactions->withQueryString()->links('pagination::bootstrap-5') !!}
                         </div>
                     </div>
                 </div>
