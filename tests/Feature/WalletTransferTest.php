@@ -51,15 +51,15 @@ class WalletTransferTest extends TestCase
         $this->assertDatabaseHas('wallets', ['user_id' => $reciever->id, 'balance' => 0]);
     }
     /** @test */
-    public function top_up_amount_must_be_valid()
+    public function transfer_amount_must_be_valid()
     {
         $sender = User::factory()->create();
         $reciever = User::factory()->create();
 
         $sender->wallet->update(['balance' => 300]);
-        $response = $this->actingAs($sender)->post('wallet/topup/payment', [
+        $response = $this->actingAs($sender)->post('wallet/transfer/payment', [
             'phone' => $reciever->phone,
-            'amount' => -500,
+            'amount' => -200,
         ]);
         $response->assertSessionHasErrors('amount');
         $response->assertStatus(302);
