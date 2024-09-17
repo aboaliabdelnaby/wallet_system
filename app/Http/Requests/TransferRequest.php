@@ -24,7 +24,7 @@ class TransferRequest extends FormRequest
         return [
             //
             'amount'=>'required|numeric|regex:/^\d+(\.\d{1,2})?$/',
-             'phone'=>'required|numeric',
+             'phone'=>'required|string',
         ];
     }
 }
